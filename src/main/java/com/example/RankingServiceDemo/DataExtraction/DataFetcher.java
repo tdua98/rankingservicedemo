@@ -28,7 +28,7 @@ public class DataFetcher {
                 n-> {
                     if (redisRepository.existsById(n)) {
                         RedisList.add(n);
-                    } else if(eSrepository.){
+                    } else {
                         EsList.add(n);
                     }
                 }
