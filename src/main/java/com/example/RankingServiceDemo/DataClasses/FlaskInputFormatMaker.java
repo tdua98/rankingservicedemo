@@ -12,9 +12,9 @@ import java.util.Map;
 @Component
 public class FlaskInputFormatMaker {
     private  Map<String , String> models = new HashMap<String, String>(){{
-        this.put("1","LGBMModel");
-        this.put( "2","LGBMModel_better");
-        this.put("11","rfModel");
+        this.put("2","LGBMModel");
+        this.put( "11","LGBMModel_better");
+        this.put("1","rfModel");
     }};
     public FlaskRequest createObjectES(List<Dataset> datasets, String cityid){
 
@@ -52,13 +52,14 @@ public class FlaskInputFormatMaker {
                 doubleList.add(datasets.get(i).getUser_cat_dtob());
                 doubleList.add(datasets.get(i).getDistance());
 
+                System.out.println(doubleList.get(i));
                 map.put(datasets.get(i).getHotelid(), doubleList);
 
 
             }
             flaskRequest = new FlaskRequest(models.get(cityid), map);
         }
-        else if(cityid.equals("2")){
+        else if(cityid.equals("11")){
 
             for (int i = 0; i < datasets.size(); i++) {
                 List<Object> doubleList = new ArrayList<>();
@@ -85,6 +86,7 @@ public class FlaskInputFormatMaker {
                 doubleList.add(datasets.get(i).getUser_cat_dtob());
                 doubleList.add(datasets.get(i).getDistance());
 
+                System.out.println(doubleList.get(i));
                 map.put(datasets.get(i).getHotelid(), doubleList);
 
 

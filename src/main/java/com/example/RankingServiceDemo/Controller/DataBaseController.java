@@ -5,6 +5,7 @@ import com.example.RankingServiceDemo.DataBases.ES.ESrepository;
 import com.example.RankingServiceDemo.DataBases.Redis.RedisRepository;
 import com.example.RankingServiceDemo.DataClasses.Dataset;
 import com.example.RankingServiceDemo.DataClasses.HotelData;
+import com.example.RankingServiceDemo.Schedular.EStoRedisDataTransfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,8 @@ public class DataBaseController {
 
     @Autowired
     private RedisRepository redisRepository;
+    @Autowired
+    EStoRedisDataTransfer eStoRedisDataTransfer;
 
 //    @RequestMapping(method = RequestMethod.GET, value = "/ES/exist/{id}")
 //    public boolean exist(@PathVariable String id)
@@ -62,5 +65,8 @@ public class DataBaseController {
         redisRepository.deleteById(hotelData.getHotelid());
         return (HotelData) redisRepository.save(hotelData);
     }
+
+
+
 
 }

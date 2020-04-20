@@ -11,10 +11,10 @@ public class RankingRequest{
     private String cityid;
     private boolean  isCitySearch;
     private boolean nearbysearch;
-    private Date chechin;
-    private Date checkout;
+    private String chechin;
+    private String checkout;
     private boolean is_weekend_checkin;
-    private Date searchTime;
+    private String searchTime;
 
 
 
@@ -23,7 +23,7 @@ public class RankingRequest{
 
     public  RankingRequest(){}
 
-    public RankingRequest(@NotEmpty(message = "hotelids should not be null") List<String> hotelids, @NotEmpty(message = "city id should not be null") String cityid, boolean isCitySearch, boolean nearbysearch, Date chechin, Date checkout, boolean is_weekend_checkin, Date searchTime) {
+    public RankingRequest(@NotEmpty(message = "hotelids should not be null") List<String> hotelids, @NotEmpty(message = "city id should not be null") String cityid, boolean isCitySearch, boolean nearbysearch, String chechin,String checkout, boolean is_weekend_checkin, String searchTime) {
         this.hotelids = hotelids;
         this.cityid = cityid;
         this.isCitySearch = isCitySearch;
@@ -66,27 +66,27 @@ public class RankingRequest{
         this.nearbysearch = nearbysearch;
     }
 
-    public Date getChechin() {
+    public String getChechin() {
         return chechin;
     }
 
-    public void setChechin(Date chechin) {
+    public void setChechin(String chechin) {
         this.chechin = chechin;
     }
 
-    public Date getCheckout() {
+    public String getCheckout() {
         return checkout;
     }
 
-    public void setCheckout(Date checkout) {
+    public void setCheckout(String checkout) {
         this.checkout = checkout;
     }
 
-    public Date getSearchTime() {
+    public String getSearchTime() {
         return searchTime;
     }
 
-    public void setSearchTime(Date searchTime) {
+    public void setSearchTime(String searchTime) {
         this.searchTime = searchTime;
     }
 

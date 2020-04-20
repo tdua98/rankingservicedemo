@@ -23,7 +23,7 @@ public class EStoRedisDataTransfer {
     private ESrepository eSrepository;
 
     @Scheduled(cron="0 12 * * * ?")
-    private void  DataTransfer() throws IOException {
+    public void  DataTransfer() throws IOException {
         redisRepository.saveAll(eSrepository.getAllHotels());
     }
 

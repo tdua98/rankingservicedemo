@@ -2,8 +2,8 @@ import pickle
 from os import abort
 
 rfModel = pickle.load(open('./Models/randomForestmodel.sav', 'rb'))
-LgbmModel = pickle.load(open('/Users/tanujdua/Documents/flaskproject/Models/LGBMModel.pkl','rb'))
-LgbmModel_better = pickle.load(open('/Users/tanujdua/Documents/flaskproject/Models/LGBMModel_better.pkl', 'rb'))
+LgbmModel = pickle.load(open('./Models/LGBMModel.pkl','rb'))
+LgbmModel_better = pickle.load(open('./Models/LGBMModel_better.pkl', 'rb'))
 
 
 models = {'rfModel': 8, 'LGBMModel': 21, 'LGBMModel_better': 21}

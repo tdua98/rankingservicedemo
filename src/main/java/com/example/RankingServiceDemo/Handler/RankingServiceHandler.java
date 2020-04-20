@@ -69,7 +69,7 @@ public class RankingServiceHandler {
 
         //converting the data into json for in the format according to flask's need
         FlaskRequest dataForFlask = flaskInputFormatMaker.createObjectES(data,rankingRequest.getCityid());
-
+        System.out.println(dataForFlask.getData());
 
         //Connection With Flask
         String scores;
