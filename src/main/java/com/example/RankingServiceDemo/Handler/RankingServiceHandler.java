@@ -3,6 +3,8 @@ package com.example.RankingServiceDemo.Handler;
 
 import com.example.RankingServiceDemo.DataClasses.*;
 import com.example.RankingServiceDemo.DataExtraction.DataFetcher;
+import com.example.RankingServiceDemo.DataManipulation.DataPreprocessing;
+import com.example.RankingServiceDemo.DataClasses.HotelData;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +48,8 @@ public class RankingServiceHandler {
     private DataFetcher dataFetcher;
     @Autowired
     private FlaskInputFormatMaker flaskInputFormatMaker;
-
+    @Autowired
+    private DataPreprocessing dataPreprocessing;
     @Autowired
     private RestTemplate restTemplate;
 
@@ -57,8 +60,11 @@ public class RankingServiceHandler {
     public RankingResponse manageRanking(RankingRequest rankingRequest ) throws JsonProcessingException {
 
         //Fetching data from the database
-        List<Dataset> data = dataFetcher.fetchDataFromDB(rankingRequest);
+        List<HotelData> hotelData = dataFetcher.fetchDataFromDB(rankingRequest);
 
+        UserData userData = new UserData("20458612",1493.89);
+
+        List<Dataset> data = dataPreprocessing.dataCleaning(hotelData,userData, rankingRequest);
 
 
         //converting the data into json for in the format according to flask's need

@@ -29,12 +29,14 @@ public class Dataset {
     private double hotel_placeid_ctr;
     private double hotel_placeid_br;
     private double hotel_placeid_dtob;
-
     private double user_cat_ctr;
     private double user_cat_br;
     private double user_cat_dtob;
+
     private double distance;
 
+    public Dataset(){
+    }
     public Dataset(String hotelid, String userid, double fprice, double hotelType, double user_abp, double discount_per, double hotel_btod, double hotel_user_br, double hotel_user_ctr, double hotel_user_btod, double avg_user_rr, boolean is_weekend_checkin, double recom_score, double ratingMean, double ratingCount, boolean is_city_search, boolean is_locality_search, double hotel_placeid_ctr, double hotel_placeid_br, double hotel_placeid_dtob, double user_cat_ctr, double user_cat_br, double user_cat_dtob, double distance) {
         this.hotelid = hotelid;
         this.userid = userid;

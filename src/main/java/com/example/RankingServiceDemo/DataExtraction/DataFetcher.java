@@ -2,8 +2,8 @@ package com.example.RankingServiceDemo.DataExtraction;
 
 import com.example.RankingServiceDemo.DataBases.ES.ESrepository;
 import com.example.RankingServiceDemo.DataBases.Redis.RedisRepository;
-import com.example.RankingServiceDemo.DataClasses.Dataset;
 import com.example.RankingServiceDemo.DataClasses.RankingRequest;
+import com.example.RankingServiceDemo.DataClasses.HotelData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,11 +18,12 @@ public class DataFetcher {
     @Autowired
     RedisRepository redisRepository;
 
-    public List<Dataset> fetchDataFromDB(RankingRequest rankingRequest)
+    public List<HotelData> fetchDataFromDB(RankingRequest rankingRequest)
     {
-        List<Dataset> datasetList =null;
+        List<HotelData> hotelDataList =null;
         List<String> RedisList = new ArrayList<>();
         List<String> EsList = new ArrayList<>();
+
 
         rankingRequest.getHotelids().forEach(
                 n-> {
@@ -33,10 +34,10 @@ public class DataFetcher {
                     }
                 }
         );
-        datasetList = (List<Dataset>) redisRepository.findAllById(RedisList);
-        datasetList.addAll(eSrepository.getAllDataById(EsList));
+        hotelDataList = (List<HotelData>) redisRepository.findAllById(RedisList);
+        hotelDataList.addAll(eSrepository.getAllDataById(EsList));
 
-        return  datasetList;
+        return  hotelDataList;
     }
 
 
